@@ -4,26 +4,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
-namespace System.Factions
+namespace System.Fractions
 {
-    class Faction
+    class Fraction
     {
         private int numerator;
         private int denominator;
         private string sim = "|";
-        public Faction(int numerato, int denominato)
+        public Fraction(int numerato, int denominato)
         {
             numerator = numerato;
             denominator = denominato;
 
         }
-
-        public static Faction operator +(Faction f1, Faction f2)
+        public void Print()
         {
-            Faction res = new Faction(0, 0);
+            Console.WriteLine(CreateFaction());
+
+        }
+        private object CreateFaction()
+        {
+            return numerator + sim + denominator;
+        }
+        public static Fraction operator +(Fraction f1, Fraction f2)
+        {
+            Fraction res = new Fraction(0, 0);
             if (f1.denominator == f2.denominator || f2.denominator == f1.denominator)
             {
-                res = new Faction(f1.numerator + f2.numerator, f1.denominator);
+                res = new Fraction(f1.numerator + f2.numerator, f1.denominator);
             }
             else
             {
@@ -36,12 +44,12 @@ namespace System.Factions
             }
             return res;
         }
-        public static Faction operator -(Faction f1, Faction f2)
+        public static Fraction operator -(Fraction f1, Fraction f2)
         {
-            Faction res = new Faction(0, 0);
+            Fraction res = new Fraction(0, 0);
             if (f1.denominator == f2.denominator || f2.denominator == f1.denominator)
             {
-                res = new Faction(f1.numerator - f2.numerator, f1.denominator);
+                res = new Fraction(f1.numerator - f2.numerator, f1.denominator);
             }
             else
             {
@@ -54,26 +62,35 @@ namespace System.Factions
             }
             return res;
         }
-        public static Faction operator *(Faction f1, Faction f2)
+        public static Fraction operator *(Fraction f1, Fraction f2)
         {
 
-            return new Faction(f1.numerator * f2.numerator, f1.denominator * f2.denominator); ;
+            return new Fraction(f1.numerator * f2.numerator, f1.denominator * f2.denominator); ;
         }
-        public static Faction operator /(Faction f1, Faction f2)
+        public static Fraction operator /(Fraction f1, Fraction f2)
         {
 
-            return new Faction(f1.numerator * f2.denominator, f1.denominator * f2.numerator); ;
+            return new Fraction(f1.numerator * f2.denominator, f1.denominator * f2.numerator); ;
         }
         public double ToDouble()
         {
-            return numerator / denominator;
+            string r = numerator.ToString();
+            string e =denominator.ToString();
+            double re = Convert.ToDouble(r);
+            double es = Convert.ToDouble(e);
+            double res = re / es;
+            return res;
         }
         public int ToInt32()
         {
             int res = 0;
             if (numerator % denominator == 0)
             {
-                res = numerator / denominator;
+                 string r = numerator.ToString();
+                string e = denominator.ToString();
+                int re = Convert.ToInt32(r);
+                int es = Convert.ToInt32(e);
+                 res = re / es;
             }
             else
             {
@@ -88,3 +105,18 @@ namespace System.Factions
     }
 
 }
+//Examples
+
+
+//Fraction f = new Fraction(100, 20);
+
+// Fraction f2 = new Fraction(5, 20);
+
+// Fraction f3 = f +f2;
+
+//f3 = f-f2;
+//f3=f*f2;
+//f3 = f/f2;
+//f3.ToInt32();
+//f3.ToDouble();
+// f3.Print();
