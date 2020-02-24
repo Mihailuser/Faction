@@ -1,2 +1,90 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
+namespace System.Factions
+{
+    class Faction
+    {
+        private int numerator;
+        private int denominator;
+        private string sim = "|";
+        public Faction(int numerato, int denominato)
+        {
+            numerator = numerato;
+            denominator = denominato;
+
+        }
+
+        public static Faction operator +(Faction f1, Faction f2)
+        {
+            Faction res = new Faction(0, 0);
+            if (f1.denominator == f2.denominator || f2.denominator == f1.denominator)
+            {
+                res = new Faction(f1.numerator + f2.numerator, f1.denominator);
+            }
+            else
+            {
+                try { throw new Exception { }; }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Wrong work : {e.TargetSite} ,{e.Message}, an error has occurred:{e.StackTrace}");
+                }
+
+            }
+            return res;
+        }
+        public static Faction operator -(Faction f1, Faction f2)
+        {
+            Faction res = new Faction(0, 0);
+            if (f1.denominator == f2.denominator || f2.denominator == f1.denominator)
+            {
+                res = new Faction(f1.numerator - f2.numerator, f1.denominator);
+            }
+            else
+            {
+                try { throw new Exception { }; }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Wrong work: {e.TargetSite} ,{e.Message},an error has occurred:{e.StackTrace}");
+                }
+
+            }
+            return res;
+        }
+        public static Faction operator *(Faction f1, Faction f2)
+        {
+
+            return new Faction(f1.numerator * f2.numerator, f1.denominator * f2.denominator); ;
+        }
+        public static Faction operator /(Faction f1, Faction f2)
+        {
+
+            return new Faction(f1.numerator * f2.denominator, f1.denominator * f2.numerator); ;
+        }
+        public double ToDouble()
+        {
+            return numerator / denominator;
+        }
+        public int ToInt32()
+        {
+            int res = 0;
+            if (numerator % denominator == 0)
+            {
+                res = numerator / denominator;
+            }
+            else
+            {
+                try { throw new Exception { }; }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Wrong work : {e.TargetSite} ,{e.Message},  an error has occurred:{e.StackTrace}");
+                }
+            }
+            return res;
+        }
+    }
+
+}
