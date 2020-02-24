@@ -1,2 +1,2 @@
 # Faction class
- New type for C# -Faction
+A new type for C# -Faction
