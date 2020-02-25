@@ -6,21 +6,22 @@ using System.Collections.Generic;
 using System.Numerics;
 namespace System.Fractions
 {
-    class Fraction
+    struct Fraction
     {
-        private int numerator;
-        private int denominator;
-        private string sim = "|";
-        public Fraction(int numerato, int denominato)
-        {
-            numerator = numerato;
-            denominator = denominato;
-
-        }
         public void Print()
         {
             Console.WriteLine(CreateFaction());
 
+        }
+        private int numerator;
+        private int denominator;
+        private string sim;
+
+        public Fraction(int numerato, int denominato, string si = "|")
+        {
+            numerator = numerato;
+            denominator = denominato;
+            sim = si;
         }
         private object CreateFaction()
         {
@@ -75,7 +76,7 @@ namespace System.Fractions
         public double ToDouble()
         {
             string r = numerator.ToString();
-            string e =denominator.ToString();
+            string e = denominator.ToString();
             double re = Convert.ToDouble(r);
             double es = Convert.ToDouble(e);
             double res = re / es;
@@ -86,11 +87,12 @@ namespace System.Fractions
             int res = 0;
             if (numerator % denominator == 0)
             {
-                 string r = numerator.ToString();
+                string r = numerator.ToString();
                 string e = denominator.ToString();
                 int re = Convert.ToInt32(r);
                 int es = Convert.ToInt32(e);
-                 res = re / es;
+                res = re / es;
+
             }
             else
             {
@@ -105,18 +107,3 @@ namespace System.Fractions
     }
 
 }
-//Examples
-
-
-//Fraction f = new Fraction(100, 20);
-
-// Fraction f2 = new Fraction(5, 20);
-
-// Fraction f3 = f +f2;
-
-//f3 = f-f2;
-//f3=f*f2;
-//f3 = f/f2;
-//f3.ToInt32();
-//f3.ToDouble();
-// f3.Print();
