@@ -29,7 +29,7 @@ namespace System.Fractions
         public static Fraction operator +(Fraction f1, Fraction f2)
         {
             Fraction res = new Fraction(0, 0);
-            if (f1.denominator == f2.denominator || f2.denominator == f1.denominator)
+            if (f1.denominator == f2.denominator)
             {
                 res = new Fraction(f1.numerator + f2.numerator, f1.denominator);
             }
@@ -47,7 +47,7 @@ namespace System.Fractions
         public static Fraction operator -(Fraction f1, Fraction f2)
         {
             Fraction res = new Fraction(0, 0);
-            if (f1.denominator == f2.denominator || f2.denominator == f1.denominator)
+            if (f1.denominator == f2.denominator)
             {
                 res = new Fraction(f1.numerator - f2.numerator, f1.denominator);
             }
