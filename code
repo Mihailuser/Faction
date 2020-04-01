@@ -6,11 +6,12 @@ namespace System.Fractions
 {
     struct Fraction
     {
-        public void Print()
+        public void println()
         {
             Console.WriteLine(CreateFaction());
 
         }
+
         private int numerator;
         private int denominator;
         private string sim;
@@ -105,3 +106,4 @@ namespace System.Fractions
     }
 
 }
+
